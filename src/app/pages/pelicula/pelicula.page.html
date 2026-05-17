@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/peliculas" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{ pelicula.titulo || 'Cargando...' }}</ion-title>
+
+    <!-- ACCIONES EN EL HEADER -->
+    @if (pelicula) {
+    <ion-buttons slot="end">
+      <ion-button color="warning" [routerLink]="['/pelicula-form', pelicula.id]">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" (click)="eliminar(pelicula.id!)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="movies-content">
+  @if (pelicula) {
+  <div class="detail-container">
+    <!-- BANNER -->
+    <div class="movie-backdrop">
+      <img [src]="pelicula.imagen_url" [alt]="pelicula.titulo" class="backdrop-image"
+        (error)="$any($event.target).src = 'https://static.vecteezy.com/system/resources/previews/001/254/680/non_2x/cinema-background-concept-vector.jpg'">
+      <div class="overlay"></div>
+      <div class="duration-badge">⏱ {{ pelicula.duracion }}</div>
+    </div>
+
+    <!-- CUERPO DE DETALLES -->
+    <div class="movie-detail-info">
+      <h1 class="movie-main-title">{{ pelicula.titulo }}</h1>
+
+      <div class="movie-meta">
+        <div class="meta-badge genre">🎭 {{ pelicula.genero }}</div>
+        <div class="meta-badge rating" [ngClass]="{
+            'safe-rating': pelicula.clasificacion === 'Todo público',
+            'warning-rating': pelicula.clasificacion === '12 años' || pelicula.clasificacion === '13 años',
+            'adult-rating': pelicula.clasificacion === '15 años' || pelicula.clasificacion === '16 años' || pelicula.clasificacion === '18 años'
+          }">
+          <span *ngIf="pelicula.clasificacion === 'Todo público'">👨‍👩‍👧</span>
+          <span *ngIf="pelicula.clasificacion === '12 años' || pelicula.clasificacion === '13 años'">⚠️</span>
+          <span
+            *ngIf="pelicula.clasificacion === '15 años' || pelicula.clasificacion === '16 años' || pelicula.clasificacion === '18 años'">🔞</span>
+          {{ pelicula.clasificacion }}
+        </div>
+      </div>
+
+      <!-- SINOPSIS -->
+      <h3 class="section-label">Sinopsis</h3>
+      <p class="movie-full-description">{{ pelicula.descripcion }}</p>
+
+      <!-- SECCIÓN MULTIMEDIA -->
+      <div class="multimedia-section">
+        <div class="media-block" *ngIf="pelicula.audio_url">
+          <h3 class="section-label"><ion-icon name="volume-high-outline"></ion-icon> Soundtrack</h3>
+          <audio controls class="audio-player">
+            <source [src]="pelicula.audio_url" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div class="media-block" *ngIf="pelicula.video_url">
+          <h3 class="section-label"><ion-icon name="play-outline"></ion-icon> Trailer Oficial</h3>
+          <div class="video-wrapper"
+            *ngIf="pelicula.video_url.includes('youtube') || pelicula.video_url.includes('youtu.be') || pelicula.video_url.includes('embed')">
+            <iframe [src]="videoSafeUrl" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </div>
+  }
+
+  <ion-toast [isOpen]="isToastOpen" message="Película eliminada correctamente" [duration]="2000" position="bottom"
+    color="danger" icon="trash-outline" (didDismiss)="onToastDismiss()">
+  </ion-toast>
+
+</ion-content>

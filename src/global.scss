@@ -35,3 +35,41 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* =========================
+   ALERTA CUSTOM
+========================= */
+
+.custom-alert .alert-wrapper {
+    background: #111827 !important;
+    border-radius: 22px !important;
+    border:
+        1px solid rgba(255,255,255,.06);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.45);
+}
+
+.custom-alert .alert-title {
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+}
+
+.custom-alert .alert-message {
+    color: #cbd5e1 !important;
+    font-size: .95rem !important;
+}
+
+/* BOTONES */
+
+.custom-alert button {
+    font-weight: 700 !important;
+}
+
+.custom-alert .alert-button-role-cancel {
+    color: #cbd5e1 !important;
+}
+
+.custom-alert .alert-button-role-destructive {
+    color: #ef4444 !important;
+}

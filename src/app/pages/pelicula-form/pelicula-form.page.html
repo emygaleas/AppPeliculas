@@ -1,0 +1,105 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/peliculas" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ id ? 'Editar Película' : 'Nueva Película' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-content">
+  <div class="form-wrapper">
+    <div class="form-card">
+      
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          
+          <ion-col size="12">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Título</ion-label>
+              <ion-input [(ngModel)]="pelicula.titulo" placeholder="Nombre de la película"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="6" style="padding-right: 6px;">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Género</ion-label>
+              <ion-select [(ngModel)]="pelicula.genero" interface="action-sheet" placeholder="Ver...">
+                <ion-select-option value="Acción">Acción</ion-select-option>
+                <ion-select-option value="Ciencia ficción">Ciencia Ficción</ion-select-option>
+                <ion-select-option value="Comedia">Comedia</ion-select-option>
+                <ion-select-option value="Drama">Drama</ion-select-option>
+                <ion-select-option value="Infantil">Infantil</ion-select-option>
+                <ion-select-option value="Romance">Romance</ion-select-option>
+                <ion-select-option value="Terror">Terror</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="6" style="padding-left: 6px;">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Duración</ion-label>
+              <ion-input [(ngModel)]="pelicula.duracion" placeholder="Ej: 112 min"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Clasificación</ion-label>
+              <ion-select [(ngModel)]="pelicula.clasificacion" interface="action-sheet" placeholder="Seleccionar...">
+                <ion-select-option value="Todo público">👨‍👩‍👧 Todo público</ion-select-option>
+                <ion-select-option value="12 años">⚠️ 12 años</ion-select-option>
+                <ion-select-option value="13 años">⚠️ 13 años</ion-select-option>
+                <ion-select-option value="15 años">🔞 15 años</ion-select-option>
+                <ion-select-option value="16 años">🔞 16 años</ion-select-option>
+                <ion-select-option value="18 años">🔞 18 años</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Trailer de YouTube</ion-label>
+              <ion-input [(ngModel)]="pelicula.video_url" placeholder="https://youtube.com/watch?v=..."></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item class="custom-item">
+              <ion-label position="stacked">Descripción</ion-label>
+              <ion-textarea rows="4" [(ngModel)]="pelicula.descripcion" placeholder="Sinopsis de la cinta..."></ion-textarea>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <div class="upload-section">
+              <label class="upload-label">Poster de la película</label>
+              <input type="file" accept="image/*" (change)="seleccionarImagen($event)" class="file-input">
+              
+              @if (pelicula.imagen_url) {
+                <div class="image-container">
+                  <img [src]="pelicula.imagen_url" class="preview-image">
+                </div>
+              }
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <div class="upload-section" style="margin-top: 8px;">
+              <label class="upload-label">Soundtrack / Audio</label>
+              <input type="file" accept="audio/*" (change)="seleccionarAudio($event)" class="file-input">
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+      <ion-button expand="block" class="save-btn" (click)="guardar()">
+        Guardar Película
+      </ion-button>
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,113 @@
+<!-- MENU LATERAL -->
+<ion-menu side="end" contentId="main-content" class="custom-menu">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Opciones
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="menu-container">
+      <ion-button expand="block" class="menu-btn add-btn" routerLink="/pelicula-form">Agregar Película</ion-button>
+      <ion-item button (click)="generoSeleccionado = ''"
+        [ngClass]="{'item-activo': generoSeleccionado === ''}">Todas</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Acción'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Acción'}">Acción</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Comedia'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Comedia'}">Comedia</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Ciencia ficción'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Ciencia ficción'}">Ciencia Ficción</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Drama'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Drama'}">Drama</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Infantil'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Infantil'}">Infantil</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Romance'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Romance'}">Romance</ion-item>
+      <ion-item button (click)="generoSeleccionado = 'Terror'"
+        [ngClass]="{'item-activo': generoSeleccionado === 'Terror'}">Terror</ion-item>
+    </div>
+
+  </ion-content>
+
+</ion-menu>
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<div class="ion-page" id="main-content">
+
+  <ion-header [translucent]="true">
+
+    <ion-toolbar>
+
+      <ion-title>
+        🎬 Mis Películas
+      </ion-title>
+
+      <ion-buttons slot="end">
+
+        <ion-menu-button autoHide="false"></ion-menu-button>
+
+      </ion-buttons>
+
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-content class="movies-content">
+
+    <div class="movies-container">
+
+      @for (pelicula of peliculasFiltradas(); track pelicula.id) {
+
+      <ion-card class="movie-card" [routerLink]="['/pelicula', pelicula.id]">
+
+        <div class="image-container">
+          <img [src]="pelicula.imagen_url" [alt]="pelicula.titulo" class="movie-image"
+            (error)="$any($event.target).src = 'https://static.vecteezy.com/system/resources/previews/001/254/680/non_2x/cinema-background-concept-vector.jpg'">
+          <div class="overlay"></div>
+          <div class="duration-badge">
+            ⏱ {{ pelicula.duracion }}
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <h2 class="movie-title">
+            {{ pelicula.titulo }}
+          </h2>
+          <p class="movie-description">
+            {{ pelicula.descripcion }}
+          </p>
+          <ion-button expand="block" class="detail-button">
+            Ver Detalles
+          </ion-button>
+        </div>
+
+      </ion-card>
+
+      } @empty {
+
+      <div class="empty-movies-container">
+        <div class="empty-icon">🍿</div>
+        <h2>No hay películas disponibles</h2>
+        <p>
+          @if (generoSeleccionado) {
+          No encontramos películas registradas en el género <strong>{{ generoSeleccionado }}</strong>.
+          } @else {
+          Aún no has agregado ninguna película al catálogo. ¡Comienza a armar tu lista!
+          }
+        </p>
+        <ion-button class="add-movie-empty-btn" routerLink="/pelicula-form">
+          Agregar Película
+        </ion-button>
+      </div>
+
+      }
+
+    </div>
+
+  </ion-content>
+
+</div>

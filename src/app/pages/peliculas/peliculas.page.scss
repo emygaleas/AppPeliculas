@@ -1,0 +1,311 @@
+.movies-content {
+    --background:
+        linear-gradient(180deg,
+            #020617 0%,
+            #0f172a 100%);
+}
+
+/* HEADER */
+ion-toolbar {
+    --background: rgba(2, 6, 23, 0.9);
+    --border-width: 0;
+    backdrop-filter: blur(12px);
+    padding-top: 6px;
+}
+
+ion-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+}
+
+/* CONTENEDOR */
+.movies-container {
+    padding: 18px;
+}
+
+/* CARD */
+.movie-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 28px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* IMAGEN */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+}
+
+.movie-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.movie-card:hover .movie-image {
+    transform: scale(1.08);
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background:linear-gradient(to top,rgba(2, 6, 23, 1) 0%,rgba(2, 6, 23, .6) 35%, transparent 70%);
+}
+
+/* BADGE */
+.duration-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(139, 92, 246, 0.95);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+/* INFO */
+.movie-info {
+    padding: 18px;
+}
+
+.movie-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.movie-description {
+    color: #cbd5e1;
+    font-size: .97rem;
+    line-height: 1.7;
+    opacity: .92;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* BOTÓN DETALLE */
+.detail-button {
+    margin-top: 18px;
+    height: 50px;
+    
+    --background: transparent;
+    --background-hover: transparent;
+    --background-focused: transparent;
+    --background-activated: transparent;
+    
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    
+    --border-radius: 18px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.detail-button::part(native) {
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+    color: white;
+    
+    border-radius: 18px;
+    overflow: hidden;
+
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: .3px;
+    text-transform: none;
+    
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.detail-button::part(native):hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 32px rgba(99, 102, 241, 0.45);
+    
+}
+
+/* MENU */
+
+.custom-menu {
+    --width: 290px;
+    --background: linear-gradient(180deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);    
+    /* Efecto blur de fondo para que se intuya la app por detrás */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    border-radius: 24px 0 0 24px;
+    overflow: hidden;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.custom-menu ion-content {
+    --background: transparent;
+}
+
+/* toolbar del menú */
+.custom-menu ion-toolbar {
+    --background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding-top: 12px;
+    --padding-top: 20px;
+    --min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.custom-menu ion-title {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.menu-container {
+    padding: 24px 16px;
+}
+
+.menu-btn {
+    margin-bottom: 24px;
+    --border-radius: 18px;
+    height: 52px;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.add-btn {
+    --background: linear-gradient(135deg, #7c3aed, #6366f1);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+    color: white;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: .3px;
+    text-transform: none;
+    
+    
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+/* ITEMS MENU */
+ion-item {
+    --background: transparent;
+    --color: #e2e8f0;
+    margin-bottom: 6px;
+    --border-radius: 14px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    --inner-border-width: 0; 
+}
+
+ion-item:hover {
+    --background: rgba(124, 58, 237, 0.12);
+}
+
+/* ESTILO PARA EL GÉNERO SELECCIONADO (ACTIVO) */
+.item-activo {
+    --background: rgba(124, 58, 237, 0.25) !important;
+    --color: #c084fc !important;
+    font-weight: 700;
+    border-left: 4px solid #7c3aed;
+}
+
+/* BOTON MENU */
+ion-menu-button {
+    color: white;
+}
+
+/* ========================================================
+   ESTILOS PARA EL ESTADO VACÍO (EMPTY STATE)
+======================================================== */
+
+.empty-movies-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 28px;
+    backdrop-filter: blur(8px);
+}
+
+.empty-icon {
+    font-size: 4.5rem;
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.empty-movies-container h2 {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.empty-movies-container p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 260px;
+    margin-bottom: 24px;
+}
+
+.empty-movies-container strong {
+    color: #c084fc;
+    font-weight: 700;
+}
+
+.add-movie-empty-btn {
+    --background: linear-gradient(135deg, #7c3aed, #6366f1);
+    --box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    --border-radius: 16px;
+    font-weight: 700;
+    text-transform: none;
+    height: 46px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}

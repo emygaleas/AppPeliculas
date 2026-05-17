@@ -1,0 +1,263 @@
+.movies-content {
+    --background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+}
+
+/* BADGES INFO */
+.movie-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.meta-badge {
+    padding:10px 16px;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* GÉNERO */
+.genre {
+    background:rgba(124, 58, 237, 0.18);
+    color:#c4b5fd;
+}
+
+/* CLASIFICACIÓN */
+
+.rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        line-height: 1;
+    }
+}
+
+/* INFANTIL */
+
+.safe-rating {
+
+    background:rgba(34, 197, 94, .15);
+
+    color:#86efac;
+
+    border:1px solid rgba(34, 197, 94, .2);
+}
+
+/* ADOLESCENTES */
+
+.warning-rating {
+    background:rgba(251, 191, 36, .15);
+    color:#fde68a;
+    border:1px solid rgba(251, 191, 36, .2);
+}
+
+/* ADULTOS */
+
+.adult-rating {
+    background:rgba(239, 68, 68, .15);
+    color:#fca5a5;
+    border:1px solid rgba(239, 68, 68, .2);
+}
+
+/* HEADER Y BOTÓN REGRESAR */
+ion-toolbar {
+    --background: rgba(2, 6, 23, 0.9);
+    --border-width: 0;
+    backdrop-filter: blur(12px);
+    padding-top: 6px;
+}
+
+ion-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+ion-back-button {
+    --color: white;
+}
+
+/* CONTENEDOR PRINCIPAL Y FIJACIÓN DE SCROLL NATIVO */
+ion-content {
+    /* Forzamos a que Ionic habilite el scroll vertical pase lo que pase */
+    --overflow: scroll !important; 
+    display: block;
+    height: 100%;
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Permite que el contenedor crezca según su contenido interno */
+    min-height: 101%; /* Truco clásico para forzar al motor del navegador a inicializar el scroll */
+}
+
+/* SECCIÓN DEL BANNER (IMAGEN DE FONDO) */
+.movie-backdrop {
+    position: relative;
+    width: 100%;
+    height: 320px; /* Reducido ligeramente para dar aire en pantallas pequeñas */
+    overflow: hidden;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.backdrop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* OVERLAY DIFERENCIADO */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(2, 6, 23, 1) 0%,
+            rgba(2, 6, 23, .4) 40%,
+            transparent 80%);
+    pointer-events: none;
+}
+
+/* BADGE DE DURACIÓN */
+.duration-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(139, 92, 246, 0.95);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+/* TEXTOS E INFORMACIÓN */
+.movie-detail-info {
+    padding: 28px 24px;
+    color: white;
+    padding-bottom: 100px;
+}
+
+.movie-main-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.2px;
+    background: linear-gradient(135deg, #ffffff 60%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+    padding-bottom: 8px;
+    margin-bottom: 28px;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(90deg, #7c3aed, #6366f1) 1;
+}
+
+.section-label {
+    color: #8b5cf6;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.movie-full-description {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin: 0 0 24px 0; /* Añadido margen inferior para separarlo de la multimedia */
+    text-align: justify;
+}
+
+/* SECCIÓN MULTIMEDIA */
+.multimedia-section {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 60px; /* Espacio extra al final para que el scroll pase holgadamente los reproductores */
+}
+
+.media-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    ion-icon {
+        vertical-align: middle;
+        margin-right: 4px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilos del reproductor de Audio */
+.audio-player {
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    display: block;
+    background: #0f172a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor responsivo para videos de YouTube */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden; /* Mantenemos el bloqueo de desborde */
+    z-index: 5;
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* FAB PRINCIPAL Y SECUNDARIOS */
+.main-fab {
+    --background: linear-gradient(135deg, #7c3aed, #6366f1);
+    --box-shadow: 0 10px 30px rgba(99, 102, 241, .45);
+    width: 62px;
+    height: 62px;
+    transition: transform .25s ease;
+}
+
+.main-fab:hover {
+    transform: scale(1.08);
+}
+
+ion-fab-list ion-fab-button {
+    --box-shadow: 0 8px 22px rgba(0, 0, 0, .35);
+    width: 52px;
+    height: 52px;
+}
+
+ion-fab-button ion-icon {
+    font-size: 1.3rem;
+}
