@@ -295,6 +295,12 @@ npm install @capacitor/android
 
 🔗 
 
+https://github.com/user-attachments/assets/d30b5d3d-75c9-4fb0-bee1-1210edf7bd89
+
+
+
+
+
 # 📚 Aprendizajes Obtenidos
 
 Durante el desarrollo de este proyecto se reforzaron conocimientos relacionados con:
